@@ -30,11 +30,11 @@ export const useSearchUsers = () => {
     }, []);
 
     React.useEffect(() => {
-        if (q && q !== currentQuery) {
+        if (!q) {
+            initUsersCall();
+        } else if (q && q !== currentQuery) {
             handleSearchUsers(q as string);
             setCurrentQuery(q as string);
-        } else {
-            initUsersCall();
         }
     }, [initUsersCall, q, handleSearchUsers, currentQuery]);
 
