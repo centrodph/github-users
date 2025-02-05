@@ -25,6 +25,8 @@
   --text-muted: #57606a;
   --text-subtle: #6e7781;
 
+  --error: #ff0000;
+
   --shadow: 0 0 0 1px rgba(17, 24, 39, 0.05);
   --shadow-hover: 0 0 0 2px rgba(7, 46, 129, 0.2);
 }
@@ -72,4 +74,13 @@ a:active {
   display: flex;
   flex-direction: column;
   height: 100vh;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: var(--primary);
+  color: var(--background);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
 }
