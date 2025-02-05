@@ -1,13 +1,30 @@
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-}
+  
+  
+  
+  --primary: #0969da;
+  /* Primary color scale - Light theme */
+  --primary-100: #ddf4ff;
+  --primary-200: #b6e3ff;
+  --primary-300: #80ccff;
+  --primary-400: #58a6ff;
+  --primary-500: var(--primary);
+  /* Base primary color */
+  --primary-600: #0557c5;
+  --primary-700: #033d8b;
+  --primary-800: #0a2c55;
+  --primary-900: #051d4d;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+
+  --border: #d0d7de;
+  --surface: #f6f8fa;
+  --surface-hover: #f3f4f6;
+
+  --text: #24292f;
+  --text-muted: #57606a;
+  --text-subtle: #6e7781;
+  
 }
 
 html,
@@ -17,11 +34,9 @@ body {
 }
 
 body {
-  color: var(--foreground);
+  color: var(--text);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
 * {
@@ -31,12 +46,21 @@ body {
 }
 
 a {
-  color: inherit;
+  color: var(--primary);
   text-decoration: none;
+  transition: color 0.15s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+a:hover {
+  color: var(--primary-600);
+}
+
+a:active {
+  color: var(--primary-700);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
