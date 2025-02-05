@@ -1,34 +1,36 @@
-import { useState, FormEvent } from 'react';
+import React, { FormEvent } from 'react';
+import styles from './SearchForm.module.css';
 
 interface SearchFormProps {
     onSearch: (query: string) => void;
+    defaultQuery?: string;
 }
 
-const SearchForm = ({ onSearch }: SearchFormProps) => {
-    const [searchQuery, setSearchQuery] = useState('');
+export const SearchForm = (props: SearchFormProps) => {
+    const { onSearch, defaultQuery } = props;
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = React.useCallback((e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        onSearch(searchQuery);
-    };
+        const formData = new FormData(e.target as HTMLFormElement);
+        const query = formData.get('query') as string;
+        onSearch(query);
+    }, [onSearch]);
 
     return (
-        <form onSubmit={handleSubmit} className="flex gap-2">
+        <form onSubmit={handleSubmit} className={styles.form}>
             <input
                 type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                name="query"
                 placeholder="Search users..."
-                className="px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className={styles.input}
+                defaultValue={defaultQuery}
             />
             <button
                 type="submit"
-                className="bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+                className={styles.button}
             >
                 Search
             </button>
         </form>
     );
 };
-
-export default SearchForm; 

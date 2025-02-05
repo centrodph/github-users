@@ -5,8 +5,7 @@ import type { NextPage } from 'next'
 
 
 // for more info https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts
-
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+export type NextPageWithLayout<P = object, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode
 }
 

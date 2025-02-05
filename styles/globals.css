@@ -1,8 +1,8 @@
 :root {
   --background: #ffffff;
-  
-  
-  
+
+
+
   --primary: #0969da;
   /* Primary color scale - Light theme */
   --primary-100: #ddf4ff;
@@ -20,11 +20,13 @@
   --border: #d0d7de;
   --surface: #f6f8fa;
   --surface-hover: #f3f4f6;
-
+  --border-radius: 0.5rem;
   --text: #24292f;
   --text-muted: #57606a;
   --text-subtle: #6e7781;
-  
+
+  --shadow: 0 0 0 1px rgba(17, 24, 39, 0.05);
+  --shadow-hover: 0 0 0 2px rgba(7, 46, 129, 0.2);
 }
 
 html,
@@ -38,6 +40,13 @@ body {
   background: var(--background);
   font-family: Roboto, Arial, Helvetica, sans-serif;
 }
+
+div#__next {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100dvh;
+}
+
 
 * {
   box-sizing: border-box;
