@@ -93,4 +93,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
+}
+
+.paginationButton {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--primary);
+    background-color: transparent;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.paginationButton:hover {
+    background-color: var(--primary-100);
+    color: var(--primary);
 }

@@ -32,7 +32,13 @@ export const UserList = ({ data, page, handlePagination }: UserListProps) => {
                             <h2 className={styles.username}>{user.login}</h2>
                             <ToggleFavorite username={user.login} small />
                         </div>
-                        <Link href={`/user/${user.login}`} className={styles.link}>View Profile</Link>
+                        <Link
+                            title='View Profile'
+                            href={`/user/${user.login}`}
+                            className={styles.link}
+                        >
+                            View Profile
+                        </Link>
                     </li>
                 ))}
             </ul>
@@ -40,8 +46,12 @@ export const UserList = ({ data, page, handlePagination }: UserListProps) => {
                 <div className={styles.results}>Showing {items?.length} results of {total_count}</div>
                 <div className={styles.results}>Page {page + 1} of {Math.ceil(total_count! / 30)}</div>
                 <div className={styles.paginationButtons}>
-                    <button className={styles.paginationButton} onClick={() => handlePagination(page - 1)}>Previous</button>
-                    <button className={styles.paginationButton} onClick={() => handlePagination(page + 1)}>Next</button>
+                    {page > 0 && (
+                        <button className={styles.paginationButton} onClick={() => handlePagination(page - 1)}>Previous</button>
+                    )}
+                    {page < Math.ceil(total_count! / 30) - 1 && (
+                        <button className={styles.paginationButton} onClick={() => handlePagination(page + 1)}>Next</button>
+                    )}
                 </div>
             </div>
         </div>
