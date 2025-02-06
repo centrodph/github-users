@@ -26,6 +26,7 @@
 }
 
 .error {
+  padding: 1rem;
   color: var(--error);
   font-size: 1.2rem;
   font-weight: 500;

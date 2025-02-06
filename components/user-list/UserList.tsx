@@ -6,18 +6,12 @@ import { ToggleFavorite } from '../toggleFavorite/ToggleFavorite';
 
 interface UserListProps {
     data: GitHubSearchResponse;
+    page: number;
+    handlePagination: (page: number) => void;
 }
 
-export const UserList = ({ data }: UserListProps) => {
+export const UserList = ({ data, page, handlePagination }: UserListProps) => {
     const { items, total_count } = data;
-
-    if (!data || !data.items || !data.items.length) {
-        return (
-            <div className={styles.emptyMessage}>
-                <p>No users found</p>
-            </div>
-        );
-    }
 
     return (
         <div className={styles.listContainer}>
@@ -44,9 +38,10 @@ export const UserList = ({ data }: UserListProps) => {
             </ul>
             <div className={styles.pagination}>
                 <div className={styles.results}>Showing {items?.length} results of {total_count}</div>
+                <div className={styles.results}>Page {page + 1} of {Math.ceil(total_count! / 30)}</div>
                 <div className={styles.paginationButtons}>
-                    <button className={styles.paginationButton}>Previous</button>
-                    <button className={styles.paginationButton}>Next</button>
+                    <button className={styles.paginationButton} onClick={() => handlePagination(page - 1)}>Previous</button>
+                    <button className={styles.paginationButton} onClick={() => handlePagination(page + 1)}>Next</button>
                 </div>
             </div>
         </div>

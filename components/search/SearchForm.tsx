@@ -2,7 +2,7 @@ import React, { FormEvent } from 'react';
 import styles from './SearchForm.module.css';
 
 interface SearchFormProps {
-    onSearch: (query: string) => void;
+    onSearch: (query: string, page: string) => void;
     defaultQuery?: string;
 }
 
@@ -13,7 +13,7 @@ export const SearchForm = (props: SearchFormProps) => {
         e.preventDefault();
         const formData = new FormData(e.target as HTMLFormElement);
         const query = formData.get('query') as string;
-        onSearch(query);
+        onSearch(query, '0');
     }, [onSearch]);
 
     return (

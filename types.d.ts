@@ -64,3 +64,8 @@ interface GitHubSearchResponse {
     incomplete_results?: boolean;
     items?: GitHubUser[];
 }
+
+interface GitHubError {
+    message: string;
+    documentation_url: string;
+}
