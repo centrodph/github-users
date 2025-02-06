@@ -1,0 +1,112 @@
+.error {
+    text-align: center;
+    padding: 2rem;
+    color: var(--error);
+}
+
+.userPage {
+    padding: 2rem;
+    margin: 2rem auto;
+    width: 100%;
+    background-color: var(--background-secondary);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.userHeader {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.avatarContainer {
+    flex-shrink: 0;
+}
+
+.avatar {
+    border-radius: 50%;
+}
+
+.userInfo {
+    flex-grow: 1;
+}
+
+.name {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.username {
+    color: var(--text-secondary);
+    margin: 0.5rem 0 1rem;
+}
+
+.userDetails {
+    margin-top: 2rem;
+}
+
+.bio {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat {
+    text-align: center;
+    padding: 1rem;
+    background: var(--background-secondary);
+    border-radius: 0.5rem;
+}
+
+.statNumber {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.statLabel {
+    color: var(--text-secondary);
+}
+
+.additionalInfo {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.infoItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.infoItem a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.infoItem a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .userHeader {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .avatarContainer {
+        width: 150px;
+        height: 150px;
+    }
+}

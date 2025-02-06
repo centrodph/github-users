@@ -34,7 +34,7 @@ export const UserList = ({ users }: UserListProps) => {
                         <div data-testid="user-name">
                             <h2 className={styles.username}>{user.login}</h2>
                         </div>
-                        <Link href={`/users/${user.login}`} className={styles.link}>View Profile</Link>
+                        <Link href={`/user/${user.login}`} className={styles.link}>View Profile</Link>
                     </li>
                 ))}
             </ul>

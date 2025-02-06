@@ -1,0 +1,14 @@
+.favoriteButton {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.favoriteButton.favorite {
+    background: var(--primary);
+    color: white;
+}
