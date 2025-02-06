@@ -9,23 +9,19 @@ interface ToggleFavoriteProps {
     small?: boolean;
 }
 
+
+
 export const ToggleFavorite = ({ username, small }: ToggleFavoriteProps) => {
     const { favorites, toggleFavorite } = useLocalFavorite();
     const isFavorite = React.useMemo(() => favorites.includes(username), [favorites, username]);
 
-    if (small) {
-        return (
-            <button
-                data-testid="toggle-favorite"
-                data-username={username}
-                onClick={toggleFavorite}
-                className={`${styles.favoriteButton} ${isFavorite ? styles.favorite : ''} ${small ? styles.small : ''}`}
-                title={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-            >
-                {isFavorite ? '❤️' : '🤍'}
-            </button>
-        )
-    }
+
+    const label = React.useMemo(() => {
+        if (small) {
+            return isFavorite ? '❤️' : '🤍';
+        }
+        return isFavorite ? 'Favorite' : 'Add to favorites';
+    }, [small, isFavorite]);
 
 
 
@@ -34,10 +30,10 @@ export const ToggleFavorite = ({ username, small }: ToggleFavoriteProps) => {
             data-testid="toggle-favorite"
             data-username={username}
             onClick={toggleFavorite}
-            className={`${styles.favoriteButton} ${isFavorite ? styles.favorite : ''}`}
+            className={`${styles.favoriteButton} ${isFavorite ? styles.favorite : ''} ${small ? styles.small : ''}`}
             title={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
         >
-            {isFavorite ? 'Favorite' : 'Add to favorites'}
+            {label}
         </button>
     )
 }
