@@ -18,6 +18,7 @@ interface GitHubUser {
     type: string;
     user_view_type: string;
     site_admin: boolean;
+    score: number;
 }
 
 
@@ -55,4 +56,11 @@ interface UserDetails {
     following: number;
     created_at: string;
     updated_at: string;
+}
+
+
+interface GitHubSearchResponse {
+    total_count?: number;
+    incomplete_results?: boolean;
+    items?: GitHubUser[];
 }

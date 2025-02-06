@@ -5,14 +5,18 @@ export const useSearchUsers = () => {
     const router = useRouter();
     const { q } = router.query;
     const [currentQuery, setCurrentQuery] = React.useState<string>("");
-    const [users, setUsers] = React.useState<GitHubUser[]>([]);
+    const [dataResponse, setDataResponse] = React.useState<GitHubSearchResponse>({
+        items: [],
+        total_count: 0,
+        incomplete_results: false,
+    });
     const [error, setError] = React.useState<string | null>(null);
 
     const handleSearchUsers = React.useCallback(async (query: string) => {
         try {
             const response = await fetch(`https://api.github.com/search/users?q=${query}`);
-            const data = await response.json();
-            setUsers(data.items);
+            const data: GitHubSearchResponse = await response.json();
+            setDataResponse(data);
             router.push(`/?q=${query}`);
         } catch (error) {
             setError(error as string);
@@ -22,8 +26,12 @@ export const useSearchUsers = () => {
     const initUsersCall = React.useCallback(async () => {
         try {
             const response = await fetch(`https://api.github.com/users`);
-            const data = await response.json();
-            setUsers(data);
+            const data: GitHubUser[] = await response.json();
+            setDataResponse({
+                items: data,
+                total_count: data.length,
+                incomplete_results: false,
+            });
         } catch (error) {
             setError(error as string);
         }
@@ -38,5 +46,5 @@ export const useSearchUsers = () => {
         }
     }, [initUsersCall, q, handleSearchUsers, currentQuery]);
 
-    return { users, handleSearchUsers, error };
+    return { data: dataResponse, handleSearchUsers, error };
 };

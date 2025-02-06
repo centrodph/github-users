@@ -7,7 +7,7 @@ import { UserList } from "@/components/user-list/UserList";
 import styles from "@/styles/Home.module.css";
 
 const HomePage: NextPageWithLayout = () => {
-  const { handleSearchUsers, users, error } = useSearchUsers();
+  const { handleSearchUsers, data, error } = useSearchUsers();
   return (
     <>
       <Head>
@@ -18,7 +18,7 @@ const HomePage: NextPageWithLayout = () => {
       </Head>
       <div data-testid="home-page" className={styles.homePage}>
         <SearchForm onSearch={handleSearchUsers} />
-        <UserList users={users} />
+        <UserList data={data!} />
         {error && <div className={styles.error}>{error}</div>}
       </div>
     </>

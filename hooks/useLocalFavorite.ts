@@ -19,6 +19,8 @@ export const useLocalFavorite = () => {
     }, [favorites]);
 
     const toggleFavorite = (ev: React.MouseEvent<HTMLButtonElement>) => {
+        ev.preventDefault();
+        ev.stopPropagation();
         const username = ev.currentTarget.dataset.username;
         if (!username) return;
         setFavorites((currentFavorites) => {

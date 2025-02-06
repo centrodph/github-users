@@ -12,3 +12,20 @@
     background: var(--primary);
     color: white;
 }
+
+.favoriteButton.small {
+    border: none;
+    background: transparent;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    color: var(--primary);
+    cursor: pointer;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 1;
+}
+
+.favoriteButton.small:hover {
+    background: var(--primary);
+}
